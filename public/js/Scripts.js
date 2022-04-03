@@ -18,17 +18,42 @@
     
 const clickMe = () => {
        alert("Thanks for clicking me. Hope you have a nice day!")
-    }
+};
+
+const addProjectToApp = (project) => {
+    $.ajax({
+        url: '/api/projects',
+        data: project,
+        type: 'POST',
+        success: (result) => {
+            alert(result.message);
+            location.reload(); //auto reload and we can see data comes from API
+        }
+    })
+}
+
     
+    
+// const submitForm = () => {
+//     let formData = {};
+//     formData.first_name = $('#first_name').val();
+//     formData.last_name = $('#last_name').val();
+//     formData.password = $('#password').val();
+//     formData.email = $('#email').val();
+
+//     console.log("Form Data Submitted: ", formData);
+// };
 const submitForm = () => {
     let formData = {};
-    formData.first_name = $('#first_name').val();
-    formData.last_name = $('#last_name').val();
-    formData.password = $('#password').val();
-    formData.email = $('#email').val();
+    formData.title = $('#title').val();
+    formData.image = $('#image').val();
+    formData.link = $('#link').val();
+    formData.description = $('#description').val();
 
     console.log("Form Data Submitted: ", formData);
-};
+    addProjectToApp(formData); //call project API
+
+}
 
 const getProjects = () => {
 
@@ -58,7 +83,7 @@ const addCards = (items) => {
 $(document).ready(function(){
     $('.materialboxed').materialbox();
     $('#formSubmit').click(()=>{
-    submitForm();
+        submitForm();
     });
     //console.log("I am working FIne");
     getProjects();

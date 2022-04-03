@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-var cors = require(cors);
+var cors = require("cors");
 const MongoClient = require("mongodb").MongoClient; // MongoClient class 
 let projectCollection;
 //Coonect database
@@ -18,13 +18,21 @@ app.use(cors);
 const createCollection = (collectionName) => {
     client.connect((err, db) => {
         projectCollection = client.db().collection(collectionName);
-        if (err){
-                console.log("MongoDB database Connected");
+        if (!err){
+             console.log("MongoDB database Connected");
         } else {
-                console.log("08 Error", err);
-                //process.exit(1);
+            console.log("DB Error", err);
+            //process.exit(1);
         }
     });  
+}
+
+const insertProjects = (project,callback) => {
+    projectCollection.insert(project,callback);
+}
+
+const getProjects = (callback) => {
+    projectCollection.find({}).toArray(callback);
 }
 
 const cardList = [
@@ -43,19 +51,38 @@ const cardList = [
 ]
 
 
+
+app.get('/api/projects',(req,res) => {
+    //res.json({statusCode: 200, data: cardList, message:"Success"});
+    getProjects((err,result) => {
+        if(err) {
+            res.json({statusCode: 400, message: err})
+        }
+        else {
+            res.json({statusCode: 200, message:"Success", data: result})
+        }
+    })
+});
+
+app.post('/api/projects',(req,res) => {
+    console.log("New Project added", req.body)
+    var newProject = req.body;
+    insertProjects(newProject,(err,result) => {
+        if(err) {
+            res.json({statusCode: 400, message: err})
+        }
+        else {
+            res.json({statusCode: 200, message:"Project Successfully added", data: result})
+        }
+    });
+});
+
 const addNumbers = (number1, number2) => {
     var num1 = parseInt(number1)
     var num2 = parseInt(number2)
     var result = num1 + num2;
     return result;
 }
-
-app.get('/api/projects',(req,res) => {
-
-    res.json({statusCode: 200, data: cardList, message:"Success"});
-
-})
-
 app.get("/addTwoNumbers",(req,res) => {
     var number1 = req.query.number1;
     var number2 = req.query.number2;
@@ -67,7 +94,7 @@ var port = process.env.port || 3000;
 
 app.listen(port,()=>{
     console.log("App running at http://localhost:"+port);
-    //createCollection(pets);
+    createCollection('pets');
 })
 
 
