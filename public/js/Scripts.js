@@ -1,17 +1,20 @@
-const cardList = [
-    {
-        title: "Kuala 2",
-        image: "images/kuala2.jpeg",
-        link: "About Kuala 2",
-        desciption: "Demo desciption about Kuala 2"
-    },
-    {
-        title: "Kuala 3",
-        image: "images/kuala3.jpeg",
-        link: "About Kuala 3",
-        desciption: "Demo desciption about Kuala 3"
-    }
-]
+
+///////////notes Take this array and add into server.js (backend)
+
+// const cardList = [
+//     {
+//         title: "Kuala 2",
+//         image: "images/kuala2.jpeg",
+//         link: "About Kuala 2",
+//         desciption: "Demo desciption about Kuala 2"
+//     },
+//     {
+//         title: "Kuala 3",
+//         image: "images/kuala3.jpg",
+//         link: "About Kuala 3",
+//         desciption: "Demo desciption about Kuala 3"
+//     }
+// ]
 const clickMe = () => {
     alert("Thanks for clicking me. Hope you have a nice day!")
 }
@@ -24,6 +27,22 @@ const submitForm = () => {
     formData.email = $('#email').val();
 
     console.log("Form Data Submitted: ", formData);
+}
+
+const getProjects = () => {​
+
+    $.get('/api/projects',(response) => {​
+
+        if(response.statusCode==200){​
+            console.log(response);
+            addCards(response.data);​
+        }​
+        else {
+            console.log(response);
+        }
+
+    })​
+
 }
 
 const addCards = (items) => {
@@ -47,7 +66,8 @@ $(document).ready(function(){
     $('#formSubmit').click(()=>{
         submitForm();
     })
-    addCards(cardList);
+    
+    //addCards(cardList);
     $('.modal').modal();
   });
 

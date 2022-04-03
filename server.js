@@ -5,12 +5,35 @@ app.use(express.static(__dirname+'/public'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+
+const cardList = [
+    {
+        title: "Kuala 2",
+        image: "images/kuala2.jpeg",
+        link: "About Kuala 2",
+        desciption: "Demo desciption about Kuala 2"
+    },
+    {
+        title: "Kuala 3",
+        image: "images/kuala3.jpeg",
+        link: "About Kuala 3",
+        desciption: "Demo desciption about Kuala 3"
+    }
+]
+
+
 const addNumbers = (number1, number2) => {
     var num1 = parseInt(number1)
     var num2 = parseInt(number2)
     var result = num1 + num2;
     return result;
 }
+
+app.get('/api/projects',(req,res) => {​
+
+    res.json({statusCode: 200, data: cardList, message:"Success"})​
+
+})​
 
 app.get("/addTwoNumbers",(req,res) => {
     var number1 = req.query.number1;
