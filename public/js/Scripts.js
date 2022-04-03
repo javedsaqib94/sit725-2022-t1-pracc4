@@ -30,12 +30,12 @@ const submitForm = () => {
     console.log("Form Data Submitted: ", formData);
 };
 
-const getProjects = () => {​
+const getProjects = () => {
 
     $.get('/api/projects',(response) => {
         if (response.statusCode==200){
             console.log(response);
-            addCards(response.data);​
+            addCards(response.data);
         } else {
             console.log(response); }
     });
@@ -60,7 +60,7 @@ $(document).ready(function(){
     $('#formSubmit').click(()=>{
     submitForm();
     });
-    console.log("hhshsh");
+    //console.log("I am working FIne");
     getProjects();
     //addCards(cardList);
     $('.modal').modal();

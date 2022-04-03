@@ -1,10 +1,31 @@
-var express = require("express")
-var app = express()
+var express = require("express");
+var app = express();
+var cors = require(cors);
+const MongoClient = require("mongodb").MongoClient; // MongoClient class 
+let projectCollection;
+//Coonect database
 
-app.use(express.static(__dirname+'/public'))
+const uri = "mongodb+srv://javed:123123123@malik.jxkgh.mongodb.net/SIT_725_2022_t1?retryWrites=true&w=majority";
+//const uri = process.env.MONGO_URI; // can use localhost  here
+const client = new MongoClient(uri, { useNewUrlParser: true});
+
+
+app.use(express.static(__dirname+'/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors);
 
+const createCollection = (collectionName) => {
+    client.connect((err, db) => {
+        projectCollection = client.db().collection(collectionName);
+        if (err){
+                console.log("MongoDB database Connected");
+        } else {
+                console.log("08 Error", err);
+                //process.exit(1);
+        }
+    });  
+}
 
 const cardList = [
     {
@@ -38,14 +59,15 @@ app.get('/api/projects',(req,res) => {
 app.get("/addTwoNumbers",(req,res) => {
     var number1 = req.query.number1;
     var number2 = req.query.number2;
-    var result = addNumbers(number1,number2)
-    res.json({statusCode: 200, data: result, message:"Success"})
-})
+    var result = addNumbers(number1,number2);
+    res.json({statusCode: 200, data: result, message:"Success"});
+});
 
 var port = process.env.port || 3000;
 
 app.listen(port,()=>{
-    console.log("App running at http://localhost:"+port)
+    console.log("App running at http://localhost:"+port);
+    //createCollection(pets);
 })
 
 
