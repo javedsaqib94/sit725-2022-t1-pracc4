@@ -64,7 +64,7 @@ $(document).ready(function(){
     $('#formSubmit').click(()=>{
         submitForm();
     })
-    getProjects();
+        getProjects();
     //addCards(cardList);
     $('.modal').modal();
   });

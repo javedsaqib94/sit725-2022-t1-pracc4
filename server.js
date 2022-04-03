@@ -21,7 +21,6 @@ const cardList = [
     }
 ]
 
-
 const addNumbers = (number1, number2) => {
     var num1 = parseInt(number1)
     var num2 = parseInt(number2)
@@ -31,7 +30,7 @@ const addNumbers = (number1, number2) => {
 
 app.get('/api/projects',(req,res) => {
 
-    res.json({statusCode: 200, data: cardList, message:"Success"})
+    res.json({statusCode: 200, data: cardList, message:"Success"});
 
 })
 
