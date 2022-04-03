@@ -9,16 +9,17 @@
 //         desciption: "Demo desciption about Kuala 2"
 //     },
 //     {
-//         title: "Kuala 3",
-//         image: "images/kuala3.jpg",
-//         link: "About Kuala 3",
-//         desciption: "Demo desciption about Kuala 3"
-//     }
-// ]
+    //         title: "Kuala 3",
+    //         image: "images/kuala3.jpg",
+    //         link: "About Kuala 3",
+    //         desciption: "Demo desciption about Kuala 3"
+    //     }
+    // ]
+    
 const clickMe = () => {
-    alert("Thanks for clicking me. Hope you have a nice day!")
-}
-
+       alert("Thanks for clicking me. Hope you have a nice day!")
+    }
+    
 const submitForm = () => {
     let formData = {};
     formData.first_name = $('#first_name').val();
@@ -40,9 +41,7 @@ const getProjects = () => {​
         else {
             console.log(response);
         }
-
-    })​
-
+    })
 }
 
 const addCards = (items) => {
@@ -62,14 +61,14 @@ const addCards = (items) => {
 $(document).ready(function(){
     $('.materialboxed').materialbox();
     $('#formSubmit').click(()=>{
-        submitForm();
+    submitForm();
     })
-        getProjects();
+    getProjects();
     //addCards(cardList);
     $('.modal').modal();
   });
 
-
+ 
 
 
 
