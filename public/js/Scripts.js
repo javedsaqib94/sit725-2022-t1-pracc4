@@ -28,7 +28,7 @@ const submitForm = () => {
     formData.email = $('#email').val();
 
     console.log("Form Data Submitted: ", formData);
-}
+};
 
 const getProjects = () => {​
 
@@ -41,7 +41,7 @@ const getProjects = () => {​
         else {
             console.log(response);
         }
-    })
+    });
 }
 
 const addCards = (items) => {
@@ -62,7 +62,8 @@ $(document).ready(function(){
     $('.materialboxed').materialbox();
     $('#formSubmit').click(()=>{
     submitForm();
-    })
+    });
+    console.log("hhshsh");
     getProjects();
     //addCards(cardList);
     $('.modal').modal();
