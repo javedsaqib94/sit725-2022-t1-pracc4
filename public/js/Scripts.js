@@ -59,14 +59,12 @@ const addCards = (items) => {
     });
 }
 
-
-
 $(document).ready(function(){
     $('.materialboxed').materialbox();
     $('#formSubmit').click(()=>{
         submitForm();
     })
-    
+    getProjects();
     //addCards(cardList);
     $('.modal').modal();
   });

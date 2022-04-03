@@ -33,7 +33,7 @@ app.get('/api/projects',(req,res) => {
 
     res.json({statusCode: 200, data: cardList, message:"Success"})
 
-})​
+})
 
 app.get("/addTwoNumbers",(req,res) => {
     var number1 = req.query.number1;
