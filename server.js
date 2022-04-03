@@ -29,9 +29,9 @@ const addNumbers = (number1, number2) => {
     return result;
 }
 
-app.get('/api/projects',(req,res) => {​
+app.get('/api/projects',(req,res) => {
 
-    res.json({statusCode: 200, data: cardList, message:"Success"})​
+    res.json({statusCode: 200, data: cardList, message:"Success"})
 
 })​
 
