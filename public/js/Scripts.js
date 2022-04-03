@@ -32,7 +32,7 @@ const submitForm = () => {
 
 const getProjects = () => {​
 
-    $.get('/api/projects',(response) => {​
+    $.get('/api/projects',(response) => {
 
         if(response.statusCode==200){​
             console.log(response);
