@@ -5,7 +5,7 @@ const MongoClient = require("mongodb").MongoClient; // MongoClient class
 let projectCollection;
 //Coonect database
 
-const uri = "mongodb+srv://javed:123123123@malik.jxkgh.mongodb.net/SIT_725_2022_t1?retryWrites=true&w=majority";
+const uri = "mongodb+srv://javed:123123123@malik.jxkgh.mongodb.net/Sit_725_prac4_2022?retryWrites=true&w=majority";
 //const uri = process.env.MONGO_URI; // can use localhost  here
 const client = new MongoClient(uri, { useNewUrlParser: true});
 
@@ -17,12 +17,12 @@ app.use(cors);
 
 const createCollection = (collectionName) => {
     client.connect((err, db) => {
-        projectCollection = client.db().collection(collectionName);
+        projectCollection = client.db("Sit_725_prac4").collection(collectionName);
         if (!err){
              console.log("MongoDB database Connected");
         } else {
             console.log("DB Error", err);
-            //process.exit(1);
+            process.exit(1);
         }
     });  
 }
@@ -94,7 +94,7 @@ var port = process.env.port || 3000;
 
 app.listen(port,()=>{
     console.log("App running at http://localhost:"+port);
-    createCollection('pets');
+    createCollection("petsNew");
 })
 
 
