@@ -1,3 +1,5 @@
+require('dotenv').config()
+//console.log(process.env) // remove this after you've confirmed it working
 var express = require("express");
 var app = express();
 var cors = require("cors");
@@ -5,7 +7,7 @@ const MongoClient = require("mongodb").MongoClient; // MongoClient class
 let projectCollection;
 //Coonect database
 
-const uri = "mongodb+srv://javed:123123123@malik.jxkgh.mongodb.net/Sit_725_prac4_2022?retryWrites=true&w=majority";
+const uri = "mongodb+srv://"+process.env.mongodbUser+":"+process.env.mongodbPassword+"@malik.jxkgh.mongodb.net/Sit_725_prac4_2022?retryWrites=true&w=majority";
 //const uri = process.env.MONGO_URI; // can use localhost  here
 const client = new MongoClient(uri, { useNewUrlParser: true});
 
