@@ -6,13 +6,13 @@
 //         title: "Kuala 2",
 //         image: "images/kuala2.jpeg",
 //         link: "About Kuala 2",
-//         desciption: "Demo desciption about Kuala 2"
+//         description: "Demo description about Kuala 2"
 //     },
 //     {
     //         title: "Kuala 3",
     //         image: "images/kuala3.jpg",
     //         link: "About Kuala 3",
-    //         desciption: "Demo desciption about Kuala 3"
+    //         description: "Demo description about Kuala 3"
     //     }
     // ]
     
@@ -74,7 +74,7 @@ const addCards = (items) => {
     '<span class="card-title activator grey-text text-darken-4">'+item.title+'<i class="material-icons right">more_vert</i></span><p><a href="#">'+item.link+'</a></p></div>'+
     '<div class="card-reveal">'+
         '<span class="card-title grey-text text-darken-4">'+item.title+'<i class="material-icons right">close</i></span>'+
-        '<p class="card-text grey-text text-darken-4">'+item.desciption+'</p>'+
+        '<p class="card-text grey-text text-darken-4">'+item.description+'</p>'+
       '</div></div></div>';
       $("#card-section").append(itemToAppend)
     });

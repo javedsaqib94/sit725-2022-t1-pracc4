@@ -40,13 +40,13 @@ const cardList = [
         title: "Kuala 2",
         image: "images/kuala2.jpeg",
         link: "About Kuala 2",
-        desciption: "Demo desciption about Kuala 2"
+        description: "Demo description about Kuala 2"
     },
     {
         title: "Kuala 3",
         image: "images/kuala3.jpeg",
         link: "About Kuala 3",
-        desciption: "Demo desciption about Kuala 3"
+        description: "Demo description about Kuala 3"
     }
 ]
 
